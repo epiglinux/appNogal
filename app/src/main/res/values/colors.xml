@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="primary" type="color">#A83203</item>
+    <item name="primaryDark" type="color">#993E19</item>
+
+    <item name="selectorItem" type="color">#996A57</item>
+    <item name="headerMenuColor" type="color">#D97C57</item>
+
+</resources>
