@@ -1,5 +1,6 @@
 package com.danielme.android.navigationdrawer;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,20 +14,25 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        DrawerLayout.DrawerListener {
+        DrawerLayout.DrawerListener, ResidentesFragment.OnFragmentInteractionListener {
 
   private DrawerLayout drawerLayout;
   private static clsConexionPG conn = new clsConexionPG();
   private String rolUserLogg;
+  RecyclerView recyclerResidentes;
+  ArrayList<String> listResidentes = new ArrayList<>();
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,13 @@ public class HomeActivity extends AppCompatActivity
 
       NavigationView navigationView = findViewById(R.id.navigation_view);
 
+      //recyclerResidentes = findViewById(R.id.recyclerId);
+      //recyclerResidentes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+
+
+      //DatosResidentes adapter = new DatosResidentes(listResidentes);
+      //recyclerResidentes.setAdapter(adapter);
 
        // En el stsql se puede agregar cualquier consulta SQL deseada.
       String valor = getIntent().getExtras().getString("usuario");
@@ -109,7 +122,7 @@ public class HomeActivity extends AppCompatActivity
     int title;
     switch (menuItem.getItemId()) {
       case R.id.nav_camera:
-        title = R.string.menu_camera;
+        title = R.string.menu_Residentes;
         break;
       case R.id.nav_gallery:
         title = R.string.menu_gallery;
@@ -149,8 +162,8 @@ public class HomeActivity extends AppCompatActivity
   @Override
   public void onDrawerOpened(@NonNull View view) {
     //el drawer se ha abierto completamente
-    Toast.makeText(this, getString(R.string.navigation_drawer_open),
-            Toast.LENGTH_SHORT).show();
+    /*Toast.makeText(this, getString(R.string.navigation_drawer_open),
+            Toast.LENGTH_SHORT).show();*/
   }
 
   @Override
@@ -163,4 +176,8 @@ public class HomeActivity extends AppCompatActivity
     //cambio de estado, puede ser STATE_IDLE, STATE_DRAGGING or STATE_SETTLING
   }
 
+  @Override
+  public void onFragmentInteraction(Uri uri) {
+
+  }
 }
